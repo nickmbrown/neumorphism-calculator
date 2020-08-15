@@ -9,7 +9,21 @@
   --hover-shadow: 1px 1px 7px var(--shadow-color), -2px -2px 6px var(--shadow-color-alt);
   --primary-color: #1654F0;
   --accent-color:#2ff1ff;
-  --text-shadow-color: #fff;
+  --operator-color: rgb(111, 149, 184);
+  --text-shadow-color: rgba(255,255,255,0.5);
+}
+
+[data-theme="dark"] {
+  --shadow-color: #1f1f22f5;
+  --shadow-color-alt: #8798a813;
+  --background-color: #242429;
+  --text-color:#a8b5c0;
+  --box-shadow:5px 5px 10px var(--shadow-color), -5px -5px 5px var(--shadow-color-alt);
+  --hover-shadow: 3px 3px 3px var(--shadow-color), -3px -3px 3px var(--shadow-color-alt);
+  --primary-color: rgb(204, 42, 18);
+  --accent-color: rgb(253, 134, 54);
+  --operator-color: rgb(236, 94, 0);
+  --text-shadow-color: #6e6a6a;
 }
 
 html {
@@ -33,7 +47,7 @@ body {
 }
 
 .calculator-display {
-  background: var(--background-color);;
+  background: var(--background-color);
   color:var(--text-color);
   margin: 30px 20px 20px 20px;
   display: flex;
@@ -53,11 +67,10 @@ body {
 
   background-color: #363636;
   color: transparent;
-  text-shadow: 0px 1px 1px rgba(255,255,255,0.5);
+  text-shadow: 0px 1px 1px var(--text-shadow-color);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
-
 }
 
 .calculator-buttons {
@@ -93,14 +106,14 @@ button:focus {
 
 .digit span {
   background-color: #00000052;  color: transparent;
-  text-shadow: 0px 1px 1px rgba(255,255,255,0.5);
+  text-shadow: 0px 1px 1px var(--text-shadow-color);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
 }
 
 .operator {
-  background-color: rgb(111, 149, 184);
+  background-color: var(--operator-color);
   padding-bottom:4px;
 }
 
@@ -108,7 +121,7 @@ button:focus {
   font-size: 40px;
   font-weight: 700;
   background-color: #00000052;  color: transparent;
-  text-shadow: 1px 1px 2px rgb(111, 149, 184);
+  text-shadow: 1px 1px 2px var(--operator-color);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
@@ -142,6 +155,76 @@ button:focus {
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
+}
+
+/* Dark Mode Toggle */
+
+.theme-switch-wrapper {
+  display: flex;
+  position: fixed;
+  right:10px;
+  top:10px;
+}
+
+.toggle-text {
+  position: relative;
+  top: -4px;
+  right: 5px;
+  color: var(--on-background);
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background: linear-gradient( 90deg, var(--primary-color), var(--accent-color));  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  background: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background: linear-gradient( 90deg, var(--primary-color), var(--accent-color));  bottom: 0;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.fas {
+  font-size: 1.5rem;
+  margin: auto 10px ;
+  color:var(--text-color);
 }
 
 
