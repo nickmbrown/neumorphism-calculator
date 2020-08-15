@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+  --shadow-color: #3232503b ;
+  --shadow-color-alt: #ffffffa8;
+  --background-color: #EBECF0;
+  --text-color:#565656;
+  --box-shadow:3px 3px 12px var(--shadow-color), -5px -5px 12px var(--shadow-color-alt);
+  --hover-shadow: 1px 1px 7px var(--shadow-color), -2px -2px 6px var(--shadow-color-alt);
+  --primary-color: #1654F0;
+  --accent-color:#2ff1ff;
+  --text-shadow-color: #fff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background: var(--background-color);
+  width: 400px;
+  border-radius: 12px;
+  box-shadow: 10px 10px 20px var(--shadow-color), -10px -10px 20px var(--shadow-color-alt);
+}
+
+.calculator-display {
+  background: var(--background-color);;
+  color:var(--text-color);
+  margin: 30px 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 100px;
+  box-shadow: inset 3px 3px 7px var(--shadow-color), inset -5px -5px 10px var(--shadow-color-alt);
+}
+
+.calculator-display h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 100;
+  margin: 0;
+  padding: 5px 25px;
+  font-size: 45px;
+  overflow-x: auto;
+
+  background-color: #363636;
+  color: transparent;
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+
+}
+
+.calculator-buttons {
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  grid-gap: 20px 20px;
+  padding:20px;
+}
+
+button {
+  min-height: 50px;
+  font-size: 20px;
+  font-weight: 100;
+  border:none;
+  border-radius:100px;
+  background: var(--background-color);
+  box-shadow: var(--box-shadow);
+  color:var(--text-color);
+}
+
+button:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+button:active {
+  transform:translateY(1px);
+}
+
+button:focus {
+  outline:none;
+}
+
+.digit span {
+  background-color: #00000052;  color: transparent;
+  text-shadow: 0px 1px 1px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
+.operator {
+  background-color: rgb(111, 149, 184);
+  padding-bottom:4px;
+}
+
+.operator span{
+  font-size: 40px;
+  font-weight: 700;
+  background-color: #00000052;  color: transparent;
+  text-shadow: 1px 1px 2px rgb(111, 149, 184);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
+.clear{
+  background-color: rgb(197, 37, 37);
+}
+
+.clear span{
+  font-weight: 700;
+  background-color: #000000ad;  color: transparent;
+  text-shadow: 1px 1px 2px rgb(197, 37, 37);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
+.equal-sign {
+  grid-column: -2;
+  grid-row: 2 / span 4;
+  background-color: rgb(81, 192, 81);
+}
+
+.equal-sign span {
+  font-weight: 700;
+  font-size:60px;
+  background-color: #00000052;
+  color: transparent;
+  text-shadow: 1px 2px 5px rgb(81, 192, 81);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
+
+@media screen and (max-width: 600px) {
+  .calculator {
+    width: 95%;
+  }
+}
