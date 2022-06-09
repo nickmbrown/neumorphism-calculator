@@ -1,33 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 :root {
   --shadow-color: #3232503b ;
+  --shadow-color2: #0202695b ;
   --shadow-color-alt: #ffffffa8;
-  --background-color: #EBECF0;
+  --shadow-color-alt2:rgba(255, 255, 255, 0.411);
+  --background-color: #e8f0fd;
   --text-color:#565656;
-  --box-shadow:3px 3px 12px var(--shadow-color), -5px -5px 12px var(--shadow-color-alt);
+  --box-shadow: 3px 3px 12px var(--shadow-color), -5px -5px 12px var(--shadow-color-alt);
   --hover-shadow: 1px 1px 7px var(--shadow-color), -2px -2px 6px var(--shadow-color-alt);
+  --inset-shadow: inset 3px 3px 7px var(--shadow-color), inset -5px -5px 10px var(--shadow-color-alt);
+  --inner-outer-shadow:  3px 3px 12px var(--shadow-color), -5px -5px 12px var(--shadow-color-alt), inset 3px 3px 10px var(--shadow-color2), inset -2px -2px 20px var(--shadow-color-alt2);
+  --inner-outer-hover-shadow:  3px 3px 12px var(--shadow-color), -5px -5px 12px var(--shadow-color-alt), inset 3px 3px 20px var(--shadow-color2), inset -2px -2px 30px var(--shadow-color-alt2);
   --primary-color: #1654F0;
   --accent-color:#2ff1ff;
-  --operator-color: rgb(111, 149, 184);
+  --operator-color: #4395ff;
+  --operator-grad: linear-gradient(
+    45deg,
+    hsl(240deg 95% 64%) 0%,
+    hsl(225deg 100% 58%) 17%,
+    hsl(214deg 100% 50%) 33%,
+    hsl(210deg 100% 50%) 50%,
+    hsl(207deg 100% 49%) 67%,
+    hsl(204deg 100% 48%) 83%,
+    hsl(204deg 88% 54%) 100%
+  );
   --text-shadow-color: rgba(255,255,255,0.5);
 }
 
 [data-theme="dark"] {
-  --shadow-color: #1f1f22f5;
-  --shadow-color-alt: #8798a813;
+  --shadow-color: #1a1a1df5;
+  --shadow-color2: #26203386 ;
+  --shadow-color-alt: #b0bbc515;
+  --shadow-color-alt2:#a3b3c223;
   --background-color: #242429;
   --text-color:#a8b5c0;
-  --box-shadow:5px 5px 10px var(--shadow-color), -5px -5px 5px var(--shadow-color-alt);
-  --hover-shadow: 3px 3px 3px var(--shadow-color), -3px -3px 3px var(--shadow-color-alt);
+  --box-shadow:5px 5px 15px var(--shadow-color), -5px -5px 15px var(--shadow-color-alt);
+  --hover-shadow: 3px 3px 6px var(--shadow-color), -3px -3px 7px var(--shadow-color-alt);
+  --inset-shadow: inset 3px 3px 7px var(--shadow-color), inset -5px -5px 10px var(--shadow-color-alt);
+  --inner-outer-shadow:  3px 3px 12px var(--shadow-color), -5px -5px 20px var(--shadow-color-alt), inset 3px 3px 10px var(--shadow-color2), inset -2px -2px 10px var(--shadow-color-alt2);
+  --inner-outer-hover-shadow:  3px 3px 12px var(--shadow-color), -5px -5px 20px var(--shadow-color-alt), inset 3px 3px 20px var(--shadow-color2), inset -2px -2px 20px var(--shadow-color-alt2);
   --primary-color: rgb(204, 42, 18);
   --accent-color: rgb(253, 134, 54);
   --operator-color: rgb(236, 94, 0);
+  --operator-grad: linear-gradient(
+    45deg,
+    hsl(16deg 97% 51%) 0%,
+    hsl(18deg 95% 52%) 14%,
+    hsl(20deg 93% 53%) 29%,
+    hsl(21deg 90% 55%) 43%,
+    hsl(23deg 88% 56%) 57%,
+    hsl(24deg 86% 57%) 71%,
+    hsl(25deg 83% 59%) 86%,
+    hsl(26deg 80% 60%) 100%
+  );
   --text-shadow-color: #6e6a6a;
 }
 
 html {
   box-sizing: border-box;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 body {
@@ -37,6 +67,30 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.inner-shadow {
+  box-shadow: var(--inset-shadow);
+}
+
+.outer-shadow {
+  box-shadow: var(--box-shadow);
+}
+
+.inner-outer-shadow {
+  box-shadow: var(--inner-outer-shadow);
+}
+
+.inner-shadow:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.outer-shadow:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.inner-outer-shadow:hover {
+  box-shadow: var(--inner-outer-hover-shadow);
 }
 
 .calculator {
@@ -59,7 +113,7 @@ body {
 
 .calculator-display h1 {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 100;
+  font-weight: 600;
   margin: 0;
   padding: 5px 25px;
   font-size: 45px;
@@ -84,17 +138,13 @@ body {
 button {
   min-height: 50px;
   font-size: 20px;
-  font-weight: 100;
+  font-weight: 500;
   border:none;
   border-radius:100px;
   background: var(--background-color);
-  box-shadow: var(--box-shadow);
   color:var(--text-color);
 }
 
-button:hover {
-  box-shadow: var(--hover-shadow);
-}
 
 button:active {
   transform:translateY(1px);
@@ -105,7 +155,8 @@ button:focus {
 }
 
 .digit span {
-  background-color: #00000052;  color: transparent;
+  font-size: 30px;
+  background-color: #00000071;  color: transparent;
   text-shadow: 0px 1px 1px var(--text-shadow-color);
   -webkit-background-clip: text;
      -moz-background-clip: text;
@@ -113,22 +164,33 @@ button:focus {
 }
 
 .operator {
-  background-color: var(--operator-color);
+  /* background-color: var(--operator-color); */
+  background-image: var(--operator-grad);
   padding-bottom:4px;
 }
 
 .operator span{
   font-size: 40px;
   font-weight: 700;
-  background-color: #00000052;  color: transparent;
-  text-shadow: 1px 1px 2px var(--operator-color);
+  background-color: #0000008c;  color: transparent;
+  text-shadow: 1px 1px 5px var(--operator-color);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
 }
 
 .clear{
-  background-color: rgb(197, 37, 37);
+  /* background-color: rgb(197, 37, 37); */
+  background-image: linear-gradient(
+    45deg,
+    hsl(0deg 93% 41%) 0%,
+    hsl(6deg 93% 41%) 17%,
+    hsl(9deg 93% 41%) 33%,
+    hsl(12deg 92% 42%) 50%,
+    hsl(14deg 91% 43%) 67%,
+    hsl(15deg 90% 43%) 83%,
+    hsl(17deg 88% 44%) 100%
+  );
 }
 
 .clear span{
@@ -143,7 +205,17 @@ button:focus {
 .equal-sign {
   grid-column: -2;
   grid-row: 2 / span 4;
-  background-color: rgb(81, 192, 81);
+  /* background-color: rgb(81, 192, 81); */
+  background-image: linear-gradient(
+    45deg,
+    hsl(134deg 93% 41%) 0%,
+    hsl(137deg 95% 41%) 17%,
+    hsl(140deg 96% 41%) 33%,
+    hsl(142deg 96% 41%) 50%,
+    hsl(144deg 95% 42%) 67%,
+    hsl(146deg 92% 43%) 83%,
+    hsl(147deg 88% 44%) 100%
+  );
 }
 
 .equal-sign span {
@@ -151,7 +223,7 @@ button:focus {
   font-size:60px;
   background-color: #00000052;
   color: transparent;
-  text-shadow: 1px 2px 5px rgb(81, 192, 81);
+  text-shadow: 1px 2px 5px hsl(134deg 93% 41%);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
